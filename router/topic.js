@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const sanitizeHtml = require('sanitize-html');
 const template = require('../lib/template.js');
-const auth = require('../lib/auth.js');
+const auth = require('../lib/authLib.js');
 
 //route '/create'
 router.get('/create', (request, response) => {

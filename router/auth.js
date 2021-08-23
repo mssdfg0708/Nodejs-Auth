@@ -5,19 +5,18 @@ const fs = require('fs');
 const sanitizeHtml = require('sanitize-html');
 const template = require('../lib/template.js');
 
-const authData = {
-  email: 'test@test.com',
-  password: 'test',
-  nickname: 'Jackson'
-}
-
-
 //route '/login'
 router.get('/login', (request, response) => {
   console.log('access : login page');
+  const flashMsg = request.flash();
+  let feedback = '';
+  console.log(flashMsg)
+  if (flashMsg.error)
+    feedback = flashMsg.error[0];
   const title = 'WEB - login';
   const list = template.list(request.list);
   const html = template.HTML(title, list, `
+    <div>${feedback}</div>
     <form action="/auth/login_process" method="post">
       <p><input type="text" name="email" placeholder="email"></p>
       <p><input type="password" name="password" placeholder="password"></p>
@@ -29,6 +28,7 @@ router.get('/login', (request, response) => {
   response.send(html);
 })
 
+/*
 //route '/login_process'
 router.post('/login_process', (request, response) => {
   console.log('access : login_process');
@@ -46,17 +46,14 @@ router.post('/login_process', (request, response) => {
     response.send('Login Failed')
   }
 })
+*/
 
 //route '/logout'
 router.get('/logout', (request, response) => {
   console.log('access : logout page')
-  request.session.destroy((err) => {
-    if(err) {
-      throw err
-    }
-    else {
-      response.redirect('/')
-    }
+  request.logout();
+  request.session.save(function(){
+    response.redirect('/');
   })
 })
 
