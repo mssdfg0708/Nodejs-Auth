@@ -1,1 +1,1 @@
-<h2>Nodejs-Cookie-Auth</h2>
+<h2>Nodejs-Auth</h2>
