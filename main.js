@@ -5,6 +5,7 @@ const fs = require('fs');
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const flash = require('connect-flash')
+const db = require('./lib/db');
 const port = 3000;
 
 app.use(express.static('public'));
@@ -21,10 +22,8 @@ app.use(flash())
 const passport = require('./lib/passport')(app)
 
 app.get('*', (request, response, next) => {
-  fs.readdir('./data', (error, filelist) => {
-    request.list = filelist;
-    next();
-  })
+  request.list = db.get('topics').value();
+  next();
 })
 
 const topicRouter = require('./router/topic');
