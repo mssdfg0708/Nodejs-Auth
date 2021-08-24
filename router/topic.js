@@ -46,7 +46,7 @@ router.get('/update/:pageID', (request, response) => {
     response.redirect('/');
     return false;
   }
-  console.log('access : update page / ' + request.params.pageID);
+  console.log('access : update page/' + request.params.pageID);
   const filteredId = path.parse(request.params.pageID).base;
   fs.readFile(`data/${filteredId}`, 'utf8', (err, description) => {
     const title = request.params.pageID;
@@ -106,7 +106,7 @@ router.post('/delete_process', (request ,response) => {
 
 //route '/topic/:pageID'
 router.get('/:pageID', (request, response, next) => {
-  console.log('access : page / ' + request.params.pageID);
+  console.log('access : page/' + request.params.pageID);
   const filteredId = path.parse(request.params.pageID).base;
   fs.readFile(`data/${filteredId}`, 'utf8', (err, description) => {
     if (err){

@@ -6,8 +6,6 @@ const auth = require('../lib/authLib.js');
 //route 'main page'
 router.get('/', (request, response) => {
   console.log('access : main page');
-  if(request.user)
-    console.log('/', request.user);
   const title = 'Welcome';
   const description = 'Hello, Node.js';
   const list = template.list(request.list);
