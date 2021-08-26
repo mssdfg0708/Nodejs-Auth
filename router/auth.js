@@ -16,7 +16,7 @@ module.exports = function(passport){
     let feedback = '';
     if (flashMsg.error)
       feedback = flashMsg.error[0];
-    const title = 'WEB - login';
+    const title = 'Board - login';
     const list = template.list(request.list);
     const html = template.HTML(title, list, `
       <div>${feedback}</div>
@@ -38,7 +38,7 @@ module.exports = function(passport){
     let feedback = '';
     if (flashMsg.error)
       feedback = flashMsg.error[0];
-    const title = 'WEB - register';
+    const title = 'Board - register';
     const list = template.list(request.list);
     const html = template.HTML(title, list, `
       <div>${feedback}</div>

@@ -17,7 +17,7 @@ router.get('/create', (request, response) => {
     return false;
   }
   console.log('access : create page');
-  const title = 'WEB - create';
+  const title = 'Board - create';
   const list = template.list(request.list);
   const html = template.HTML(title, list, `
     <form action="/topic/create_process" method="post">

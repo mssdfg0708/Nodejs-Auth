@@ -11,8 +11,8 @@ router.get('/', (request, response) => {
   if(flashMsg.error){
     feedback = flashMsg.error[0];
   }
-  const title = 'Welcome';
-  const description = 'Hello, Node.js';
+  const title = 'Good day!';
+  const description = '';
   const list = template.list(request.list);
   const html = template.HTML(title, list,
     `      
